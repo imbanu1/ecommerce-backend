@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
       include: [{model: Product}]
     });
    if (!categoryData) {
-    res.status(404).json({'Category not associated with this ID'});
+    res.status(404).json({message: 'Category not associated with this ID'});
     return;
    }
    res.status(202).json(categoryData);
