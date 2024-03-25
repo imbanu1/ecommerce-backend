@@ -46,6 +46,12 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
+    if (!Array.isArray(req.body.tagIds)) {
+      res.status(400).json({ message: 'tagIds must be an array' });
+      return;
+    }
+
+
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
